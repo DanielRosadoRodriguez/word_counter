@@ -1,9 +1,12 @@
 class Reader:
-    def __init__(self, file_path):
-        self.file_path = file_path 
-        self.lines = self.get_lines()
+    def __init__(self, file_path: str):
+        self._file_path = file_path 
+        self._lines = self._read_lines()
 
-    def get_lines(self):
-        with open(self.file_path, "r", encoding="utf-8") as file:
-            lines = file.readlines()
+    def _read_lines(self):
+        with open(self._file_path, "r", encoding="utf-8") as file:
+            lines:list[str] = file.readlines()
             return lines
+
+    def get_lines(self) -> list[str]:
+        return self._lines
