@@ -1,6 +1,6 @@
-from File import File
+from File import CodeFile
 
 file_path = "my_file.py"
-mi_archivo = File(file_path)
+mi_archivo = CodeFile(file_path)
 
 print(mi_archivo.get_formatted_metrics())

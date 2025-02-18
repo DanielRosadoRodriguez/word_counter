@@ -1,4 +1,4 @@
-class Reader:
+class FileReader:
     def __init__(self, file_path: str):
         self._file_path = file_path 
         self._lines = self._read_lines()

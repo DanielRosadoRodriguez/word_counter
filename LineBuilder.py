@@ -1,17 +1,17 @@
 import re
-from Line import Line
+from CodeLine import CodeLine
 
 class LineBuilder:
 
     _raw_lines : list[str]
-    _built_lines: list[Line]
+    _built_lines: list[CodeLine]
 
     def __init__(self, raw_lines: list[str]):
         self._raw_lines = raw_lines
         self._built_lines= self._build_lines()
 
-    def _build_lines(self) -> list[Line]:
-        result: list[Line] = []
+    def _build_lines(self) -> list[CodeLine]:
+        result: list[CodeLine] = []
         i: int = 0
         while i < len(self._raw_lines):
             line: str = self._raw_lines[i]
@@ -21,17 +21,17 @@ class LineBuilder:
             elif self._is_method_signature(stripped):
                 _physical_Line : int = self._count_physical_lines(":",i) 
                 i = _physical_Line - 1 + i
-                result.append(Line("method signature",_physical_Line, 1))
+                result.append(CodeLine("method signature",_physical_Line, 1))
             elif self._is_import_line(stripped):
-                result.append(Line("import",1, 1))
+                result.append(CodeLine("import",1, 1))
             elif self._is_class(stripped):
-                result.append(Line("class", 1, 1))
+                result.append(CodeLine("class", 1, 1))
             elif self._is_variable(stripped) or self._is_self_attribute(stripped):
-                result.append(Line("variable", 1, 1))
+                result.append(CodeLine("variable", 1, 1))
             elif self._is_return(stripped):
                 _physical_Line : int = 1 if stripped.count("(") == 0 else self._count_physical_lines(")",i)
                 i = _physical_Line - 1 + i
-                result.append(Line("return", _physical_Line, 0))
+                result.append(CodeLine("return", _physical_Line, 0))
             i += 1
         return result
     
@@ -104,5 +104,5 @@ class LineBuilder:
             j += 1
         return j - startIndex + 1
     
-    def get_built_lines(self) -> list[Line]:
+    def get_built_lines(self) -> list[CodeLine]:
         return self._built_lines
