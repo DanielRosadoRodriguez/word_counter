@@ -8,7 +8,7 @@ class CodeFile:
         self._logical_lines:int = Counter(self._lines).count_logical_lines()
         self._physical_lines:int = Counter(self._lines).count_physical_lines()
 
-    def get_formatted_metrics(self) -> str:
+    def __str__(self) -> str:
         return (f"El archivo: {self._file_path}.\n" 
                         "Cuenta con las siguientes métricas:\n"
                         f"Líneas Físicas: {self._physical_lines}\n" 
