@@ -1,6 +1,7 @@
 from CodeFile import CodeFile
 
+# path to the file for which the logical and physical line counts will be calculated
 file_path = "my_file.py"
-mi_archivo = CodeFile(file_path)
+file = CodeFile(file_path)
 
-print(mi_archivo.__str__())
+print(file.__str__())

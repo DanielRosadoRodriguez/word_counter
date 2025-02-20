@@ -7,8 +7,8 @@ class LineBuilder:
     _built_lines: list[CodeLine]
 
     def __init__(self, raw_lines: list[str]):
-        self._raw_lines = raw_lines
-        self._built_lines= self._build_lines()
+        self._raw_lines:list[str] = raw_lines
+        self._built_lines:list[CodeLine] = self._build_lines()
 
     def _build_lines(self) -> list[CodeLine]:
         result: list[CodeLine] = []
