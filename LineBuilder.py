@@ -22,9 +22,7 @@ class LineBuilder:
             elif self._is_multiline_comment(stripped):
                 i = self._skip_comment(i)
             elif self._is_method_signature(stripped):
-                _physical_Line : int = self._count_physical_lines(":",i) 
-                i = _physical_Line - 1 + i
-                result.append(CodeLine("method signature",_physical_Line, 1))
+                result.append(CodeLine("method signature",1, 1))
             elif self._is_conditional(stripped):
                 result.append(CodeLine("Conditional",1, 1))
             elif self._is_loop(stripped):
@@ -41,9 +39,7 @@ class LineBuilder:
                     logical_count = stripped.count(";") + 1 
                     result.append(CodeLine("variable", 1, logical_count))
             elif self._is_control_statement(stripped):
-                _physical_Line : int = 1 if stripped.count("(") == 0 else self._count_physical_lines(")",i)
-                i = _physical_Line - 1 + i
-                result.append(CodeLine("ControlStatement", _physical_Line, 1))
+                result.append(CodeLine("ControlStatement", 1, 1))
             else:
                 result.append(CodeLine("SomethingElse", 1, 0))
             i += 1
