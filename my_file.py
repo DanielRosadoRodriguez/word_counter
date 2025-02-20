@@ -54,7 +54,7 @@ for i in range(3):
         print("Finalizado")  # finally cuenta 1 línea lógica
 
 if (
-    x 
-    and y == 3
+    x and
+    y == 3
     ):
     print("hello")

@@ -74,7 +74,7 @@ class LineBuilder:
         return stripped.startswith("return") or stripped.startswith("break") or stripped.startswith("continue")
 
     def _is_variable(self, stripped: str) -> bool:
-        pattern: re.Pattern = r'^[a-zA-Z_]\w*\s*=\s*[^;]+(;[a-zA-Z_]\w*\s*=\s*[^;]+)*$'
+        pattern: re.Pattern = r'^[a-zA-Z_]\w*\s*=\s*[^=][^;]*?(;[a-zA-Z_]\w*\s*=\s*[^=][^;]*?)*$'
         return bool(re.match(pattern, stripped))
         
     def _is_self_attribute(self, stripped: str) -> bool:
