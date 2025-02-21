@@ -51,7 +51,7 @@ class LineBuilder:
 
 
     def _is_try_except(self,stripped:str):
-        return stripped.startswith("try") or stripped.startswith("except") or stripped.startswith("finally")
+        return stripped.startswith("try") or stripped.startswith("except") or stripped.startswith("finally") or stripped.startswith("raise") 
 
     def _is_loop(self,stripped:str) -> bool:
         return stripped.startswith("for") or stripped.startswith("while")
